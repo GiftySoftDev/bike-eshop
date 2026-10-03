@@ -1,16 +1,78 @@
-# React + Vite
+# RideHaus 🚲
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A visually stunning, high-performance bicycle e-commerce hero section featuring a synchronized circular dial navigation, custom SVG text-path scrolling, and custom throttled trackpad wheel controls. Built with React, Tailwind CSS and Framer Motion.
 
-Currently, two official plugins are available:
+## Live Deme
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+_(Live Demo link)_
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Interactive 3D-Style Hero Carousel:** Smooth bicycle switching powered by Framer Motion, featuring arc-motion animations and custom wheel-scroll listeners.
 
-## Expanding the ESLint configuration
+- **Synchronized Circular Dial Mechanism:** Rotating SVG text rings and indicator balls that sync dynamically with the active bicycle selection.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Responsive Navbar & Mobile Sidebar:** A seamless desktop pill-navigation with an animated glassmorphism ellipse underline, alongside a slide-out mobile menu that dynamically reflects the currently active bike.
+
+- **State-Driven Architecture:** Unified state management lifting the active bicycle index seamlessly between the header/sidebar and hero components.
+
+## Tech Stack
+
+- **React** (with TypeScript)
+
+- **Tailwind CSS** for styling and responsive design
+
+- **Framer Motion** for fluid animations and page stage transitions
+
+- **Vite** as the build tool and development server
+
+## Screenshots
+
+_(Add screenshots )_
+
+| **Hero View (Desktop)** | **Mobile Sidebar** |
+| _\[Insert Image Link Here\]_ | _\[Insert Image Link Here\]_ |
+
+## Video Demo
+
+_(Add a link or embedded video demo)_
+
+## Getting Started
+
+Follow these instructions to get a local copy up and running on your machine.
+
+### Prerequisites
+
+Make sure you have Node.js and npm (or yarn/pnpm) installed.
+
+### Installation
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/GiftySoftDev/bike-eshop.git
+
+   ```
+
+2. Navigate to the project directory:
+
+   ```
+   cd bike-eshop
+
+   ```
+
+3. Install dependencies:
+
+   ```
+   npm install
+
+   ```
+
+4. Run the development server:
+
+   ```
+   npm run dev
+
+   ```
+
+Open <http://localhost:5173> to view it in your browser.

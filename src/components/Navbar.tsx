@@ -1,4 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
+// Import all bike images so we can reference them dynamically
+import bike1 from "../assets/bike1.png";
+import bike2 from "../assets/bike2.png";
+import bike3 from "../assets/bike3.png";
+
+const products = [
+  { img: bike1, name: "VoltRider X" },
+  { img: bike2, name: "TerraFlow" },
+  { img: bike3, name: "TrailBlazer 500" },
+];
 
 const navItems = [
   "Shop Bikes",
@@ -7,6 +17,7 @@ const navItems = [
   "About Us",
   "Contact Us",
 ];
+
 const headerActions = [
   { image: "/akar-icons--search.svg", alt: "A search icon" },
   { image: "/akar-icons--heart.svg", alt: "A heart icon" },
@@ -14,7 +25,11 @@ const headerActions = [
   { image: "/reicon--cart-filled.svg", alt: "A cart-filled icon" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  activeBikeIndex?: number; // Optional prop to sync with Hero page
+}
+
+const Navbar: React.FC<NavbarProps> = ({ activeBikeIndex = 0 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [ellipseLeft, setEllipseLeft] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -25,7 +40,6 @@ const Navbar = () => {
   // Adjust ellipse position when active index changes or window resizes
   useEffect(() => {
     const updateEllipse = () => {
-      // Only run if desktop nav is visible and we have a ref
       const currentItem = navRefs.current[activeIndex];
       if (currentItem && window.innerWidth >= 1024) {
         const leftPos =
@@ -50,10 +64,15 @@ const Navbar = () => {
     }
   }, [isSidebarOpen]);
 
+  // Get the active bicycle image dynamically based on the hero's active bike index
+  const activeBicycleImage = products[activeBikeIndex]?.img || bike1;
+
   return (
     <>
-      <header className="relative flex items-center justify-between text-nowrap px-8 py-4 bg-transparent z-990">
-        <h1 className="font-groote text-[24px]">RideHaus</h1>
+      <header className="relative flex items-center justify-between gap-3 text-nowrap w-full p-4 md:px-8 bg-transparent z-990 min-[90rem]:w-325 min-[125rem]:w-375 mx-auto">
+        <h1 className="font-groote text-[24px] leading-none flex items-center shrink-0">
+          RideHaus
+        </h1>
 
         {/* Desktop Navigation (Hidden on Mobile/Tablet) */}
         <ul className="hidden lg:flex relative items-center gap-6 py-3 px-5 text-[14px] font-inter bg-white border border-gray-200 rounded-[50px] overflow-hidden">
@@ -85,12 +104,12 @@ const Navbar = () => {
         </ul>
 
         {/* Actions & Hamburger Menu Container */}
-        <div className="flex items-center gap-7.5 z-990">
-          <ul className="flex items-center gap-6 md:gap-7.5">
+        <div className="flex items-center gap-2 sm:gap-3 z-990 shrink-0">
+          <ul className="flex items-center gap-4 sm:gap-6 md:gap-7.5">
             {headerActions.map((item, index) => (
               <li
                 key={index}
-                className="w-[15.97px] h-4 cursor-pointer hover:opacity-70"
+                className="w-[15.97px] h-4 shrink-0 flex items-center justify-center cursor-pointer hover:opacity-70"
               >
                 <img
                   src={item.image}
@@ -104,7 +123,7 @@ const Navbar = () => {
           {/* Hamburger Menu Toggle (Visible only on Mobile/Tablet) */}
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="lg:hidden relative w-5 h-4 flex flex-col justify-between items-center cursor-pointer hover:opacity-70 ml-2"
+            className="lg:hidden relative w-5 h-4 flex flex-col justify-between items-center cursor-pointer hover:opacity-70 ml-1 sm:ml-2 shrink-0"
             aria-label="Open Navigation"
           >
             <span className="block w-full h-0.5 bg-black rounded" />
@@ -130,7 +149,7 @@ const Navbar = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Dedicated Close Button Area */}
+        {/* Close Button Area */}
         <div className="flex justify-end pt-6 px-8">
           <button
             onClick={() => setIsSidebarOpen(false)}
@@ -164,16 +183,21 @@ const Navbar = () => {
                     setActiveIndex(index);
                     setIsSidebarOpen(false);
                   }}
-                  className={`relative cursor-pointer transition-colors duration-200 ${
+                  className={`relative flex items-center gap-3 cursor-pointer transition-colors duration-200 ${
                     isActive
                       ? "font-medium text-black"
                       : "font-semibold text-gray-400 hover:text-black"
                   }`}
                 >
-                  {item}
-                  {/* Subtle active indicator for mobile */}
+                  <span>{item}</span>
+
+                  {/* Dynamically display whichever bicycle is currently active on the hero page */}
                   {isActive && (
-                    <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#07D6FF] shadow-[0_0_8px_rgba(7,214,255,0.8)]" />
+                    <img
+                      src={activeBicycleImage}
+                      alt="Active bike indicator"
+                      className="w-7 h-4 object-contain shrink-0"
+                    />
                   )}
                 </li>
               );

@@ -76,12 +76,11 @@ Make sure you have Node.js and npm (or yarn/pnpm) installed.
    ```
 
 
-## UI/UX
-<a href="https://www.youtube.com/embed/UNhSBs0vXQI?si=tcqXftqzIIk1I5DM" target="_blank">
-  <img src="https://youtu.be/UNhSBs0vXQI?si=ZFXVAj_e5nuu269H" alt="Watch the inspo video" width="600" height="338" border="10" />
-</a>
+## Inspiration & Product Design
+_What inspired the project?_
 
-<br />
+One random evening, I was scrolling through YT and came across [Kingsley's design](https://youtu.be/UNhSBs0vXQI?si=ZFXVAj_e5nuu269H) and I decided to translate it into pixel perfect, responsive code.
+
 
 [Get the Figma Link](https://www.figma.com/community/file/1562453530872991574/bike-prototype-project)
 

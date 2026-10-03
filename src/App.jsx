@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
+
 const App = () => {
   const [activeBikeIndex, setActiveBikeIndex] = useState(0);
 

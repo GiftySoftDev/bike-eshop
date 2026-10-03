@@ -27,7 +27,7 @@ const NAME_OFFSETS = [
 
 // How many extra pixels the dial circle grows by (diameter) on each screen size.
 // A bigger circle = a wider, flatter-looking arc across the X axis, while the
-// top of the dial is still a true circle (so the rotation, text and ball work).
+// top of the dial is still a circle
 const getDialGrow = () => {
   if (typeof window === "undefined") return 340;
   const w = window.innerWidth;
@@ -118,9 +118,6 @@ const Hero: React.FC<HeroProps> = ({ activeIndex, setActiveIndex }) => {
       // Still animating the previous slide
       if (now < lockUntil.current) return;
 
-      // Trackpads keep firing momentum events after one swipe. Only the first
-      // event of a gesture moves a slide; the rest are ignored until the wheel
-      // has been quiet for a moment.
       if (!startOfNewGesture && gestureHandled.current) return;
 
       gestureHandled.current = true;
@@ -315,14 +312,14 @@ const Hero: React.FC<HeroProps> = ({ activeIndex, setActiveIndex }) => {
             ))}
           </svg>
 
-          {/* Dashed & Solid Outer Dial Circles */}
+          {/* Dotted & Solid Outer Dial Circles */}
           <div
             style={{ width: outerSize, height: outerSize }}
-            className="p-6 border-3 border-dashed border-black rounded-full flex items-center justify-center bg-white"
+            className="p-2 border-3 border-dotted border-black rounded-full flex items-center justify-center bg-white"
           >
             <div
               style={{ width: innerSize, height: innerSize }}
-              className="relative border-6 border-black rounded-full shadow-[0_4px_50px_rgba(0,0,0,0.25)] bg-white"
+              className="relative border-5 border-black rounded-full shadow-[0_4px_50px_rgba(0,0,0,0.25)] bg-white"
             >
               {/* Active Indicator Ball - Glides along the rim to dock beneath the active bike name */}
               <motion.div
@@ -330,7 +327,7 @@ const Hero: React.FC<HeroProps> = ({ activeIndex, setActiveIndex }) => {
                 animate={{ rotate: BALL_ANGLES[activeIndex] }}
                 transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
               >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[linear-gradient(-90deg,#07D6FF_0%,#0388A3_100%)] shadow-[0_2px_8px_rgba(3,136,163,0.6)] z-30" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[linear-gradient(-90deg,#07D6FF_0%,#0388A3_100%)] shadow-[0_2px_8px_rgba(3,136,163,0.6)] z-30" />
               </motion.div>
             </div>
           </div>
